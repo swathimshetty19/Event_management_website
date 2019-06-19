@@ -1,0 +1,64 @@
+<html>
+			<!--//$i=1;
+			//while($row= mysqli_fetch_assoc($result1))
+			//{
+				
+				//echo "<label><input type='checkbox' name='$i' //value='".$row['e']."'>".$row['e']."</label>";
+				//$i=$i+1;
+				
+			}-->
+	<head>
+		<title> User Login and Registration </title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		
+	</head>
+
+<?php
+
+#checking for connection
+$servername="localhost";
+$username="root";
+$password="";
+$dbname="eventmanagement";
+
+$con=mysqli_connect($servername,$username,$password,$dbname);
+
+if(!$con){
+	die("connection failed:".mysqli_connect_error());
+}
+session_start();
+$id=$_SESSION['id'];
+
+$q="select P_event_name as e from p_event,booking,ticket where P_event_id=event_id6 and student_id1='$id' and student_id='$id'
+UNION
+select N_event_name as e from np_event,group_members_project where N_event_id=event_id5 and P_member_id='$id'";
+
+echo"<body>
+	<div class='container'>
+	<br><br>
+		<div class='login-box'>
+		<div class='row'>
+		<div class='col-md-6 login-right'>
+			<h2> Cancel Here </h2>
+			<form action='withdraworg(p).php' method='post'>
+				<div class='form-group'>
+				<label> Event to be Withdrawn:</label>
+				<input type='text' name='ename' class='form-control' required >
+				<input type='hidden' name='id' value='$id'>
+				</div>
+				
+				
+				<button type='submit' class='btn btn-primary'> cancel </button>
+			</form>
+			</div>
+		</div>
+		
+
+		
+		</div>
+		
+	</div>
+</body>"
+?>
+</html>
